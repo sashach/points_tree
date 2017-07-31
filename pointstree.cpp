@@ -137,7 +137,7 @@ double PointsTree::getDistance(const QPoint & p1, const QPoint & p2)
 {
     double dX = p1.x() - p2.x();
     double dY = p1.y() - p2.y();
-    return sqrt(dX*dX + dY*dY);
+    return dX*dX + dY*dY; // no sqrt to increase speed
 }
 
 double PointsTree::findClosestPointFromVector(const QPoint & point, int & resIndex, const QVector<QPoint> &points)
@@ -166,11 +166,12 @@ const QPoint & PointsTree::getClosestFromNode(const QPoint & point, const QRect 
     {
         if(!node.visited && bounds.intersects(searchBounds) && !node.points.empty())
         {
+            double distanceSqrt = sqrt(distance);
             if(distance == std::numeric_limits<double>::max() ||
-                    (isPointInsideNode(QPoint(point.x() + distance, point.y()))
-                    || isPointInsideNode(QPoint(point.x() - distance, point.y()))
-                    || isPointInsideNode(QPoint(point.x(), point.y() + distance))
-                    || isPointInsideNode(QPoint(point.x(), point.y() - distance)))
+                    (isPointInsideNode(QPoint(point.x() + distanceSqrt, point.y()))
+                    || isPointInsideNode(QPoint(point.x() - distanceSqrt, point.y()))
+                    || isPointInsideNode(QPoint(point.x(), point.y() + distanceSqrt))
+                    || isPointInsideNode(QPoint(point.x(), point.y() - distanceSqrt)))
                     )
             {
                 node.visited = true;
