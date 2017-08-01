@@ -17,8 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->generateButton, QPushButton::pressed, this, onGenerate);
     connect(ui->clearButton, QPushButton::pressed, this, onClear);
-    connect(ui->usePointsTreeCheckBox, QCheckBox::stateChanged, this, onUsePointsTree);
     connect(ui->showPointsTreeCheckBox, QCheckBox::stateChanged, this, onShowPointsTree);
+
+    connect(ui->pointsTreeRadioButton, QRadioButton::toggled, this, onUsePointsTree);
 }
 
 MainWindow::~MainWindow()
@@ -47,9 +48,11 @@ void MainWindow::onClear()
     update();
 }
 
-void MainWindow::onUsePointsTree(int state)
+void MainWindow::onUsePointsTree(bool checked)
 {
-    usePointsTree = (state == Qt::Checked);
+    usePointsTree = (checked == true);
+    clearPoints();
+    update();
 }
 
 void MainWindow::onShowPointsTree(int state)

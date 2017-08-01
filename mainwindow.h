@@ -52,7 +52,7 @@ private:
 public slots:
     void onGenerate();
     void onClear();
-    void onUsePointsTree(int state);
+    void onUsePointsTree(bool checked);
     void onShowPointsTree(int state);
 };
 

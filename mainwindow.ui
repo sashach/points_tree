@@ -20,7 +20,7 @@
       <x>790</x>
       <y>0</y>
       <width>101</width>
-      <height>221</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -87,27 +87,11 @@
       <string>Add points</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="usePointsTreeCheckBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>70</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Use</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QCheckBox" name="showPointsTreeCheckBox">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>190</y>
+       <y>230</y>
        <width>70</width>
        <height>17</height>
       </rect>
@@ -119,17 +103,39 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QRadioButton" name="vectorRadioButton">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>150</y>
-       <width>71</width>
+       <y>160</y>
+       <width>95</width>
        <height>20</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Using QVector with linear search</string>
+     </property>
      <property name="text">
-      <string>Points tree</string>
+      <string>Vector</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="pointsTreeRadioButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>190</y>
+       <width>95</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Using PointsTree with QuadTree search</string>
+     </property>
+     <property name="text">
+      <string>PointsTree</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
